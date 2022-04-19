@@ -20,6 +20,8 @@ export const subtitleSync = async (
 
     return await ParseFile.arrayToSrt(updateCaptions, directory, fileName);
   } catch (error) {
-    console.error(error);
+    let message = 'Its not possible to sync subtitles';
+    if (error instanceof Error) message = error.message;
+    throw new Error(message);
   }
 };
